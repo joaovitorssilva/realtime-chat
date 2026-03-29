@@ -246,15 +246,15 @@ A production-ready multi-room chat application built with NestJS and React, feat
        │                                               │
        │  { accessToken, refreshToken, user }          │
        │◄──────────────────────────────────────────────┘
-       │
-       │
-       │  ┌─────────────────────────────────────┐     │
-       │  │         REFRESH TOKEN FLOW          │     │
-       │  └─────────────────────────────────────┘     │
-       │                                              │
-       │  POST /auth/refresh { refreshToken }         │
-       │─────────────────────────────────────────────►
-       │                                              │
+       │                                               │   
+       │                                               │
+       │  ┌─────────────────────────────────────┐      │
+       │  │         REFRESH TOKEN FLOW          │      │
+       │  └─────────────────────────────────────┘      │
+       │                                               │
+       │  POST /auth/refresh { refreshToken }          │
+       │──────────────────────────────────────────────►│
+       │                                               │
        │                                    ┌──────────▼──────────┐
        │                                    │ JwtAuthGuard        │
        │                                    │ (Validates refresh) │
@@ -342,14 +342,14 @@ A production-ready multi-room chat application built with NestJS and React, feat
        │                                    └──────────┬──────────┘
        │                                               │
        │  { event: 'newMessage', message: {...} }      │
-       │◄─────────────────────────────────────────────
+       │◄──────────────────────────────────────────────│
        │                                               │
        │  (Same message broadcasted to all             │
        │   clients in the room)                        │
        │                                               │
        │  4. Leave Room                                │
        │  { event: 'leaveRoom', roomId }               │
-       │──────────────────────────────────────────────►
+       │──────────────────────────────────────────────►│
        │                                               │
        │                                    ┌──────────▼──────────┐
        │                                    │ @SubscribeMessage   │
@@ -364,7 +364,7 @@ A production-ready multi-room chat application built with NestJS and React, feat
        │                                               │
        │  5. Disconnect                                │
        │  (on browser close / refresh)                 │
-       │─────────────────────────────────────────────►
+       │──────────────────────────────────────────────►│
        │                                               │
        │                                    ┌──────────▼──────────┐
        │                                    │ handleDisconnect()  │
@@ -695,7 +695,7 @@ frontend/
 
 ┌──────────────┐         ┌──────────────┐         ┌──────────────┐
 │    users     │         │    rooms     │         │   messages   │
-└──────┬───────┘         └──────┬───────┘         └──────────────┘
+└──────┬───────┘         └───────┬──────┘         └──────────────┘
        │                         │                          ▲
        │                         │                          │
        │                         │                          │
